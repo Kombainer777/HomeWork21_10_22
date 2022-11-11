@@ -20,24 +20,18 @@ void PrintArray(int[,] matrix)
     }
 }
 
-void FindPos(int[,] matrix, int num)
+string FindPos(int[,] matrix, int num)
 {
-    int count = 0;
+    string result = string.Empty;
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            if (matrix[i, j] == num)
-            {
-                count++;
-                Console.WriteLine($"Искомое число {num} встречается {count}-й раз в {i + 1} строке и {j + 1} столбце");
-                    
-            }
-
+            if (num == matrix[i, j]) result += $" Число {num} имеет позицию строка: {i+1}, столбец: {j+1}";
         }
     }
-    if (count<1)
-        Console.WriteLine($"Искомое число {num} в массиве не содержится");
+    if (result == string.Empty) result = "Такого элемента нет";
+    return result;
 }
 
 
@@ -55,6 +49,7 @@ Console.WriteLine("Исходный массив:");
 PrintArray(matrix);
 Console.WriteLine("");
 FindPos(matrix, num);
+Console.WriteLine(FindPos(matrix, num));
 
 
 
